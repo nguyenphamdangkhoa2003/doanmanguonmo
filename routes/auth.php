@@ -43,3 +43,9 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
 });
+
+
+Route::middleware("auth")->group(function () {
+    Route::view('profile', 'profile')
+        ->name('profile');
+});

@@ -77,6 +77,7 @@
 
                 <x-mary-menu-item title="Users" icon="o-user" link="{{ route('list-user') }}" />
                 <x-mary-menu-item title="Rooms" icon="o-home-modern" link="{{ route('list-room') }}" />
+                <x-mary-menu-item title="Room Types" icon="o-tag" link="{{ route('list-type-room') }}" />
 
             </x-mary-menu>
         </x-slot:sidebar>

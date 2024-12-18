@@ -39,5 +39,26 @@ class ListTypeRoom extends Component
             ]
         );
     }
+    public function delete($id)
+    {
+        $room_type = RoomType::find($id);
+        if (!$room_type->rooms->count())
+            DB::transaction(
+                function () use ($id, $room_type) {
+                    $images = $room_type->images;
+                    foreach ($images as $key => $value) {
+                        Cloudinary::destroy($value->public_image_id);
+                        Image::destroy($value->id);
+                    }
+
+                    RoomType::destroy($id);
+
+                    $this->success("Delete type room success");
+                }
+            );
+        else {
+            $this->error("This Room Type cannot be deleted as it is linked to existing rooms.");
+        }
+    }
 
 }

@@ -40,10 +40,18 @@ class UpdateProfileInformationForm extends Component
             'phone' => ['required', 'string', 'regex:/^(\+?\d{1,4}[-.\s]?|)?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/', Rule::unique(User::class)->ignore($user->id)],
             'address' => ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                'regex:/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/',
+                Rule::unique(User::class)->ignore($user->id),
+            ],
+
             'photo' => ['nullable', 'max:1024']
         ]);
-        $user->fill([...$validated, "email" => $this->email]);
+        $user->fill($validated);
         $image = $user->avatar;
 
         if (isset($image) && isset($this->photo)) {

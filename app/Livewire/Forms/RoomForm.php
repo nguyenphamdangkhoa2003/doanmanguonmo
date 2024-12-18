@@ -12,7 +12,7 @@ class RoomForm extends Form
     protected function rules()
     {
         return [
-            'room_number' => 'required|string|max:50',
+            'room_number' => 'required|string|max:50|unique:rooms,room_number',
             'room_type_id' => 'required|integer|exists:room_types,id',
         ];
     }

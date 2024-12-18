@@ -31,7 +31,7 @@ class ListUser extends Component
                             ->orWhere('id', 'like', "%$this->search%");
                     });
                 })
-
+                ->orderBy(...array_values($this->sortBy))
         ]);
     }
 }

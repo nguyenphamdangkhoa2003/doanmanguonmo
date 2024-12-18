@@ -24,8 +24,12 @@ class ListRoom extends Component
     public string $search = "";
     public function render()
     {
-        $rooms = Room::all();
-
+        $rooms = Room::query()
+        ->when($this->search, function (Builder $q) {
+            $q->where(function ($query) {
+                $query->where('id', 'like', "%$this->search%")->orWhere("room_number", 'like', "%$this->search%");
+            });
+        });
         return view('livewire.pages.admin.list-room', [
             "rooms" => $rooms,
         ]);

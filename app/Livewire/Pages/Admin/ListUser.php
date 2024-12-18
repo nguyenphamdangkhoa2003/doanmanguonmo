@@ -32,6 +32,7 @@ class ListUser extends Component
                     });
                 })
                 ->orderBy(...array_values($this->sortBy))
+                ->paginate(5)
         ]);
     }
 }

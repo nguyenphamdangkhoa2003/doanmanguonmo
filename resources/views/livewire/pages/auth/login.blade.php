@@ -5,8 +5,7 @@ use Illuminate\Support\Facades\Session;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
 
-new #[Layout('layouts.guest')] class extends Component
-{
+new #[Layout('layouts.guest')] class extends Component {
     public LoginForm $form;
 
     /**
@@ -54,6 +53,15 @@ new #[Layout('layouts.guest')] class extends Component
                 </a>
             @endif
         </div>
-
+        <div class="py-3 text-center text-gray-600 text-sm">Or Login With </div>
+        <a class="px-4 py-2 w-full items-center justify-center border flex gap-2 border-slate-200  rounded-lg text-slate-700  hover:border-slate-400  hover:text-slate-900 hover:shadow transition duration-150 cursor-pointer"
+            href="{{ route('login-by-google') }}">
+            <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy"
+                alt="google logo">
+            <span>Login with Google</span>
+        </a>
+        <div class=" w-full text-center">
+            <a href="{{ route('register') }}" class="py-3 text-sm link link-primary">Register a new account</a>
+        </div>
     </form>
 </div>

@@ -29,7 +29,8 @@ class ListRoom extends Component
             $q->where(function ($query) {
                 $query->where('id', 'like', "%$this->search%")->orWhere("room_number", 'like', "%$this->search%");
             });
-        });
+        })
+        ->orderBy(...array_values($this->sortBy));
         return view('livewire.pages.admin.list-room', [
             "rooms" => $rooms,
         ]);

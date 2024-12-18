@@ -23,7 +23,15 @@ class ListUser extends Component
     public function render()
     {
         return view('livewire.pages.admin.list-user', [
-            "users" => User::all()
+            "users" => User::query()
+                ->when($this->search, function (Builder $q) {
+                    $q->where(function ($query) {
+                        $query->where('name', 'like', "%$this->search%")
+                            ->orWhere('email', 'like', "%$this->search%")
+                            ->orWhere('id', 'like', "%$this->search%");
+                    });
+                })
+
         ]);
     }
 }

@@ -25,15 +25,25 @@ class ListRoom extends Component
     public function render()
     {
         $rooms = Room::query()
-        ->when($this->search, function (Builder $q) {
-            $q->where(function ($query) {
-                $query->where('id', 'like', "%$this->search%")->orWhere("room_number", 'like', "%$this->search%");
-            });
-        })
-        ->orderBy(...array_values($this->sortBy))
-        ->paginate(5);
+            ->when($this->search, function (Builder $q) {
+                $q->where(function ($query) {
+                    $query->where('id', 'like', "%$this->search%")->orWhere("room_number", 'like', "%$this->search%");
+                });
+            })
+            ->orderBy(...array_values($this->sortBy))
+            ->paginate(5);
         return view('livewire.pages.admin.list-room', [
             "rooms" => $rooms,
         ]);
+    }
+
+    public function delete($id)
+    {
+        try {
+            Room::destroy($id);
+            $this->success("Delete success!");
+        } catch (\Throwable $th) {
+            $this->error("Delete fail!");
+        }
     }
 }

@@ -8,7 +8,7 @@
             {{ __("Update your account's profile information and email address.") }}
         </p>
     </header>
-    <div class="flex !w-full justify-between">
+    <div class="flex flex-col-reverse md:flex-row !w-full justify-between">
 
         <form wire:submit="updateProfileInformation" class="mt-6 space-y-6 flex-1 max-w-xl">
             <div>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <x-mary-button class="btn-primary" spinner="updateProfileInformation"
+                <x-mary-button class="btn-primary w-full md:w-auto" spinner="updateProfileInformation"
                     type="submit">{{ __('Save') }}</x-mary-button>
 
                 <x-action-message class="me-3" on="profile-updated">
@@ -67,7 +67,7 @@
                 </x-action-message>
             </div>
         </form>
-        <div class="flex-1 flex justify-center items-center flex-col">
+        <div class="flex-1 flex justify-center items-center flex-col py-2 md:py-0">
             <x-mary-file wire:model="photo" accept="image/png, image/jpeg">
                 <img src="{{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}"
                     class="h-40 rounded-lg" accept="image/*" />

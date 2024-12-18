@@ -32,9 +32,10 @@
         </div>
 
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+            <x-mary-button class="btn-primary w-full md:w-auto" spinner="updateProfileInformation"
+                type="submit">{{ __('Save') }}</x-mary-button>
 
-            <x-action-message class="me-3" on="password-updated">
+            <x-action-message class="me-3" on="profile-updated">
                 {{ __('Saved.') }}
             </x-action-message>
         </div>

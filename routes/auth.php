@@ -49,3 +49,6 @@ Route::middleware("auth")->group(function () {
     Route::view('profile', 'profile')
         ->name('profile');
 });
+Route::middleware(["auth", IsAdminMiddleware::class])->group(function () {
+    Volt::route("admin/list-user", ListUser::class)->name("list-user");
+});

@@ -30,7 +30,12 @@ class ListTypeRoom extends Component
         return view(
             'livewire.pages.admin.list-type-room',
             [
-                "room_types" => RoomType::all(),
+                "room_types" => RoomType::query()
+                    ->when($this->search, function (Builder $q) {
+                        $q->where(function ($query) {
+                            $query->where('room_type_name', 'like', "%$this->search%")->orWhere("id", "like", "%$this->search%")->orWhere("description", "like", "%$this->search%");
+                        });
+                    })
             ]
         );
     }

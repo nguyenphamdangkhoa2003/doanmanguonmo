@@ -35,7 +35,7 @@ class ListTypeRoom extends Component
                         $q->where(function ($query) {
                             $query->where('room_type_name', 'like', "%$this->search%")->orWhere("id", "like", "%$this->search%")->orWhere("description", "like", "%$this->search%");
                         });
-                    })
+                    })->orderBy(...array_values($this->sortBy))
             ]
         );
     }

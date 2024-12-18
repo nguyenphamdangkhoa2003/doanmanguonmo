@@ -35,9 +35,20 @@ class ListTypeRoom extends Component
                         $q->where(function ($query) {
                             $query->where('room_type_name', 'like', "%$this->search%")->orWhere("id", "like", "%$this->search%")->orWhere("description", "like", "%$this->search%");
                         });
-                    })->orderBy(...array_values($this->sortBy))->paginate(5)
+                    })
+                    ->orderBy(...array_values($this->sortBy))
+                    ->paginate(5)
             ]
         );
+    }
+
+    public function redirectAddTypeRoom()
+    {
+        $this->redirectRoute("add-room-type");
+    }
+    public function redirectUpdateTypeRoom($id)
+    {
+        $this->redirectRoute("update-room-type", ["id" => $id]);
     }
     public function delete($id)
     {
@@ -60,5 +71,4 @@ class ListTypeRoom extends Component
             $this->error("This Room Type cannot be deleted as it is linked to existing rooms.");
         }
     }
-
 }

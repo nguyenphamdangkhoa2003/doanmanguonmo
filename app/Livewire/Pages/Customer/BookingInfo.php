@@ -48,6 +48,10 @@ class BookingInfo extends Component
 
         }
     }
+    public function deleteTypeRoomSelected($key)
+    {
+        unset($this->selected_type_room[$key]);
+    }
     function generateTxnRef()
     {
         return time() . mt_rand(1000, 9999); // Thời gian hiện tại kết hợp với số ngẫu nhiên

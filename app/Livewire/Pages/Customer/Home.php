@@ -126,6 +126,10 @@ class Home extends Component
         );
         return $result;
     }
+    public function deleteTypeRoomSelected($key)
+    {
+        unset($this->selected_type_room[$key]);
+    }
     public function updated($key)
     {
         // Kiểm tra nếu tất cả các trường dữ liệu đã hợp lệ

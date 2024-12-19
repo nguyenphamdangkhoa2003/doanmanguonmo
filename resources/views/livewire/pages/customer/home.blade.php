@@ -33,10 +33,13 @@
                             <div class="flex flex-col gap-5">
                                 @if (isset($type_rooms))
                                 @foreach ($type_rooms as $type_room)
-                                <div class="md:rounded-xl md:bg-base-100 md:shadow-xl md:w-full px-6 md:px-0">
+                                <div class="md:rounded-xl md:bg-base-100 md:shadow-md md:w-full px-6 md:px-0">
                                     @php
                                         $slides = [];
-
+                                        $room_available = $type_room->count_room_available(
+                                            $start_date,
+                                            $end_date,
+                                        );
                                         if (isset($type_room->images)) {
                                             foreach ($type_room->images as $image) {
                                                 $slides[] = [
@@ -45,8 +48,9 @@
                                             }
                                         }
                                     @endphp
+                                    @if ($room_available)
                                     <div
-                                        class="card card-side bg-base-100 shadow-xl grid grid-cols-1 lg:grid-cols-5 items-stretch">
+                                        class="card card-side bg-base-100 shadow-md grid grid-cols-1 lg:grid-cols-5 items-stretch">
                                         <div class="lg:col-span-2">
                                             <figure class="lg:h-full h-56">
                                                 <x-mary-carousel
@@ -85,6 +89,7 @@
                                                         @endphp Childrens
                                                     </div>
                                                     <div class="flex text-green-600 font-semibold">
+                                                        {{ $room_available }}
                                                         avalilable
                                                     </div>
                                                 </div>
@@ -116,6 +121,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                                 @endforeach
                                 @endif

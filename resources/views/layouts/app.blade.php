@@ -79,8 +79,8 @@
                                 <div class="w-10 rounded-full">
                                     <img
                                         src="
-                                                                                                                                                                                                                                                                                                                    {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
-                                                                                                                                                                                                                                                                                                                    " />
+                                                                                                                                                                                                                                                                                                                            {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
+                                                                                                                                                                                                                                                                                                                            " />
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,9 @@
                                     Profile
                                 </a>
                             </li>
-
+                            @if (Auth::user()->role == 'admin')
+                                <li><a class="hover:underline" href="{{ route('list-room') }}">Dashboard</a></li>
+                            @endif
                             <li><a class=" hover:underline" href="{{ route('logout') }}">Logout</a></li>
                         </ul>
                     @else

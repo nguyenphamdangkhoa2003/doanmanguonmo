@@ -55,7 +55,7 @@
         <x-slot:sidebar drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit">
 
             {{-- BRAND --}}
-            <x-mary-button label="App" class="btn-ghost" />
+            <x-mary-button label="App" class="btn-ghost" link="{{ route('home') }}" />
 
             {{-- MENU --}}
             <x-mary-menu activate-by-route>

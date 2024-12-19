@@ -52,6 +52,7 @@ class BookingInfo extends Component
     public function deleteTypeRoomSelected($key)
     {
         unset($this->selected_type_room[$key]);
+        session()->put("selected_type_room", $this->selected_type_room);
     }
     public function redirectPayment()
     {

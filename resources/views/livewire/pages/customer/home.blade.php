@@ -102,7 +102,7 @@
                                                             <div class="flex items-center gap-2 justify-end">
                                                                 <label class="font-semibold text-sm">Amount</label>
                                                                 <x-mary-input class="pl-1 py-0 !w-20" type="number"
-                                                                    min="1"
+                                                                    max="{{ $room_available }}" min="1"
                                                                     wire:model.defer="roomCount.{{ $type_room->id }}" />
                                                             </div>
                                                             @if (!collect($this->selected_type_room)->contains(fn($item) => $item['room_type']['id'] == $type_room->id))

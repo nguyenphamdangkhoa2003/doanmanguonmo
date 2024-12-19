@@ -75,7 +75,29 @@
             </div>
         </div>
         <div class="col-span-1">
-
+            <div class="bg-white shadow my-5 p-5">
+                <div class="flex justify-between w-full items-center">
+                    <h3 class="text-2xl font-extrabold">Customer</h3>
+                    <a href="{{route('list-user')}}" class="link hover:text-primary text-gray-300 no-underline text-sm">View All</a>
+                </div>
+                <hr>
+                <div class="py-2">
+                    @foreach ($users as $u)
+                        @if (isset($u->avatar))
+                            <div class="py-2 flex justify-between w-full items-center">
+                                <x-mary-avatar :image="$u->avatar->url" :title="$u->name" :subtitle="$u->created_at->format('M j, Y')"
+                                class="!w-10" />
+                                <a href="" class="link hover:text-primary"><x-mary-icon name="o-ellipsis-vertical" /></a>
+                            </div>
+                        @else
+                            <div class="py-2 flex justify-between w-full items-center">
+                            <x-mary-avatar class="!w-10" :title="$u->name" :subtitle="$u->created_at->format('M j, Y')" />
+                            <a href="" class="link hover:text-primary"><x-mary-icon name="o-ellipsis-vertical" /></a>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+            </div>
             <div class="bg-white shadow p-5">
                 <h3 class="text-2xl font-extrabold">Rooms</h3>
                 <hr>

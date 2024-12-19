@@ -15,6 +15,15 @@ class Room extends Model
         "start_date",
         "end_date"
     ];
+
+    public function room_type(): BelongsTo
+    {
+        return $this->belongsTo(RoomType::class);
+    }
+    public function booking_details(): HasMany
+    {
+        return $this->hasMany(BookingDetail::class);
+    }
     public function is_available($startDate, $endDate): bool
     {
         // Chuyển đổi ngày truyền vào thành đối tượng Carbon để so sánh

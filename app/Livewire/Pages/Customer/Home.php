@@ -39,7 +39,10 @@ class Home extends Component
     {
         // Lấy danh sách loại phòng phù hợp
         if (is_numeric($this->adults) && is_numeric($this->children) && $this->start_date <= $this->end_date) {
-            $this->type_rooms = RoomType::where("adults", ">=", $this->adults)->where("children", ">=", $this->children)->get();
+            // Lấy danh sách loại phòng phù hợp
+            $this->type_rooms = RoomType::whereRaw('(adults + children) >= ?', [$this->adults + $this->children]) // Tổng sức chứa >= tổng số người yêu cầu
+                ->where('adults', '>=', $this->adults) // Phòng phải đáp ứng tối thiểu số người lớn
+                ->get();
         } else {
             $this->type_rooms = null;
         }

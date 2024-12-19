@@ -25,7 +25,8 @@ class ListBooking extends Component
                 $q->where(function ($query) {
                     $query->where('id', 'like', "%$this->search%");
                 });
-            });
+            })
+            ->orderBy(...array_values($this->sortBy));
         return view('livewire.pages.admin.list-booking', [
             "bookings" => $bookings
         ]);

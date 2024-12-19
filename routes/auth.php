@@ -85,5 +85,6 @@ Route::middleware(["auth", "verified"])->group(function () {
 
     Route::get('booking-info', BookingInfo::class)
         ->name('booking-info');
-
+    Route::get('booking-history', BookingHistory::class)
+        ->name('booking-history');
 });

@@ -172,6 +172,7 @@
                             </x-mary-card>
                         </div>
                     </div>
+                </section>
             </div>
         </div>
     </div>

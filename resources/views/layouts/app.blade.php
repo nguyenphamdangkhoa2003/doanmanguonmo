@@ -79,8 +79,8 @@
                                 <div class="w-10 rounded-full">
                                     <img
                                         src="
-                                                                                                                                                                                                                                                                                                                            {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
-                                                                                                                                                                                                                                                                                                                            " />
+                                                                                                                                                                                                                                                                                                                                        {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
+                                                                                                                                                                                                                                                                                                                                        " />
                                 </div>
                             </div>
                         </div>
@@ -88,6 +88,11 @@
                             <li>
                                 <a class="hover:underline" href="{{ route('profile') }}">
                                     Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="hover:underline" href="{{ route('booking-history') }}">
+                                    Booking history
                                 </a>
                             </li>
                             @if (Auth::user()->role == 'admin')

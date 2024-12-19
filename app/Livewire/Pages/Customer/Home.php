@@ -80,6 +80,52 @@ class Home extends Component
 
         return $result;
     }
+    public function selected($typeRoomId)
+    {
+        // Lấy số lượng phòng từ roomCount
+        $roomCount = $this->roomCount[$typeRoomId] ?? 1; // Mặc định là 1 nếu không nhập
+
+        // Tìm đối tượng RoomType tương ứng với ID
+        $roomType = RoomType::find($typeRoomId);
+
+        if ($roomType) {
+            // Kiểm tra nếu đối tượng đã có trong mảng selected_type_room
+            $existingIndex = collect($this->selected_type_room)->search(function ($item) use ($roomType) {
+                return $item['room_type']['id'] === $roomType->id;
+            });
+
+            if ($existingIndex !== false) {
+                // Cập nhật số lượng phòng và tổng giá nếu đã chọn
+                $this->selected_type_room[$existingIndex]['count'] = $roomCount;
+                $this->selected_type_room[$existingIndex]['total_price'] = $roomCount * $roomType->base_price;
+            } else {
+                // Thêm mới đối tượng RoomType và số lượng phòng vào mảng
+                $this->selected_type_room[] = [
+                    'room_type' => $roomType->toArray(),
+                    'count' => $roomCount,
+                    'total_price' => $roomCount * $roomType->base_price,
+                ];
+            }
+
+            // Cập nhật tổng giá trị tổng cộng (nếu cần)
+            $this->totalPrice = collect($this->selected_type_room)->sum('total_price');
+        } else {
+            // Nếu không tìm thấy RoomType, có thể gửi thông báo lỗi
+            $this->addError('room_type', 'Room type not found!');
+        }
+    }
+    public function getTotalPrice()
+    {
+        $result = array_reduce(
+            $this->selected_type_room,
+            function ($carry, $i) {
+                $carry += $i['total_price'];
+                return $carry;
+            },
+            0,
+        );
+        return $result;
+    }
     public function updated($key)
     {
         // Kiểm tra nếu tất cả các trường dữ liệu đã hợp lệ

@@ -20,7 +20,12 @@ class ListBooking extends Component
     public string $search = "";
     public function render()
     {
-        $bookings = Booking::all();
+        $bookings = Booking::query()
+            ->when($this->search, function (Builder $q) {
+                $q->where(function ($query) {
+                    $query->where('id', 'like', "%$this->search%");
+                });
+            });
         return view('livewire.pages.admin.list-booking', [
             "bookings" => $bookings
         ]);

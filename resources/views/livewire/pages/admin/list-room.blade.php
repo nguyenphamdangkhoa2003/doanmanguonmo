@@ -15,7 +15,8 @@
             wire:confirm.prompt="Are you sure?\n\nType DELETE to confirm|DELETE" />
         <x-mary-button icon="o-pencil" link="{{ route('update-room', ['id' => $room->id]) }}" spinner class="btn-sm"
             wire:key="{{ $room->id }}" />
-        <x-mary-button icon="s-chevron-right" spinner class="btn-sm" wire:key="{{ $room->id }}" />
+        <x-mary-button icon="s-chevron-right" link="{{ route('room-booking-times', ['id' => $room->id]) }}" spinner
+            class="btn-sm" wire:key="{{ $room->id }}" />
         @endscope
     </x-mary-table>
 </div>

@@ -38,7 +38,11 @@ class Home extends Component
     public function render()
     {
         // Lấy danh sách loại phòng phù hợp
-        $this->type_rooms = RoomType::where("adults", ">=", $this->adults)->where("children", ">=", $this->children)->get();
+        if (is_numeric($this->adults) && is_numeric($this->children) && $this->start_date <= $this->end_date) {
+            $this->type_rooms = RoomType::where("adults", ">=", $this->adults)->where("children", ">=", $this->children)->get();
+        } else {
+            $this->type_rooms = null;
+        }
         return view('livewire.pages.customer.home', [
             'type_rooms' => $this->type_rooms,
         ]);

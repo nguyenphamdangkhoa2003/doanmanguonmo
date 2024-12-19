@@ -19,22 +19,57 @@
 <body class="font-sans antialiased relative bg-secondary">
     <div class=" shadow-md sticky top-0 z-50 bg-primary">
         <div class="lg:max-w-6xl px-6 mx-auto navbar text-lg py-0">
-            <div class="navbar-start">
+            <div class="navbar-start hidden lg:block">
                 KhachSan2k
             </div>
-            <div class="navbar-center hidden lg:flex">
-                <x-mary-menu activate-by-route class="flex-row py-0">
+
+            <div class="navbar-center lg:hidden flex items-center">
+                <label for="mobile-menu-toggle" class="cursor-pointer">
+                    <!-- Hamburger Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </label>
+            </div>
+
+            <!-- Checkbox to toggle menu -->
+            <input type="checkbox" id="mobile-menu-toggle" class="hidden peer ">
+
+            <!-- Menu Section -->
+            <div
+                class="lg:navbar-center transition-all duration-200 peer-checked:flex hidden lg:flex absolute lg:static top-full left-0 w-full lg:w-auto bg-primary lg:bg-transparent flex-col lg:flex-row lg:items-center gap-4 p-4 lg:p-0">
+                <x-mary-menu activate-by-route
+                    class="lg:flex-row flex-col lg:py-0 lg:w-auto items-center transition-all duration-200">
                     <x-mary-menu-item
-                        class="rounded-none text-lg hover:border-b-2 hover:border-black {{ request()->routeIs('home') ? 'border-b-2 border-black' : '' }}"
-                        title="Home" />
-                    <x-mary-menu-item class="rounded-none text-lg hover:border-b-2 hover:border-black " title="About" />
-                    <x-mary-menu-item class="rounded-none text-lg hover:border-b-2 hover:border-black "
+                        class="rounded-none text-lg hover:border-b-2 border-black text-black transition-all duration-200 {{ request()->routeIs('home') ? 'border-b-2 border-black' : '' }}"
+                        title="Home" link="{{ route('home') }}" />
+                    <x-mary-menu-item
+                        class="rounded-none text-lg hover:border-b-2 border-black text-black transition-all duration-200"
+                        title="About" />
+                    <x-mary-menu-item
+                        class="rounded-none text-lg hover:border-b-2 border-black text-black transition-all duration-200"
                         title="Contact" />
-                    <x-mary-menu-item class="rounded-none text-lg hover:border-b-2 hover:border-black "
+                    <x-mary-menu-item
+                        class="rounded-none text-lg hover:border-b-2 border-black text-black transition-all duration-200"
                         title="Policies" />
+                    <div class="lg:hidden flex flex-col items-center">
+                        <h3 class="text-lg text-black font-semibold border-b border-white pt-6 pb-2">SETTINGS</h3>
+                        <ul tabindex="0" class="lg:hidden block ">
+                            <li>
+                                <a class="hover:underline text-lg" href="{{ route('profile') }}">
+                                    Profile
+                                </a>
+                            </li>
+
+                            <li><a class=" hover:underline text-lg" href="{{ route('logout') }}">Logout</a></li>
+                        </ul>
+                    </div>
                 </x-mary-menu>
             </div>
-            <div class="navbar-end flex-none gap-2">
+
+
+            <div class="navbar-end flex-none gap-2 hidden lg:flex">
 
                 <div class="dropdown dropdown-end">
                     @if (Auth::check())
@@ -42,9 +77,10 @@
                             <span class="text-sm">{{ Auth::user()->name }}</span>
                             <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                                 <div class="w-10 rounded-full">
-                                    <img src="
-                                                                                                                {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
-                                                                                                                " />
+                                    <img
+                                        src="
+                                                                                                                                                                                                                                                                                                                    {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
+                                                                                                                                                                                                                                                                                                                    " />
                                 </div>
                             </div>
                         </div>

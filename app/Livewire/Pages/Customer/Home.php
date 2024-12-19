@@ -37,6 +37,8 @@ class Home extends Component
     }
     public function render()
     {
+        // Lấy danh sách loại phòng phù hợp
+        $this->type_rooms = RoomType::where("adults", ">=", $this->adults)->where("children", ">=", $this->children);
         return view('livewire.pages.customer.home', [
             'type_rooms' => $this->type_rooms,
         ]);
@@ -61,5 +63,31 @@ class Home extends Component
         $year = $date->format('y'); // Lấy 2 chữ số của năm
 
         return "{$dayOfWeek}, {$day} thg {$month}, {$year}";
+    }
+    public function formatCurrencyVND($number)
+    {
+        if (!is_numeric($number)) {
+            return 'Số không hợp lệ';
+        }
+
+        $formattedNumber = number_format(abs($number), 0, ',', '.');
+        $result = $formattedNumber . ' ₫';
+
+        // Xử lý số âm
+        if ($number < 0) {
+            $result = '-' . $result;
+        }
+
+        return $result;
+    }
+    public function updated($key)
+    {
+        // Kiểm tra nếu tất cả các trường dữ liệu đã hợp lệ
+        $validatedData = $this->validate([
+            'children' => 'required|integer|min:0',
+            'adults' => 'required|integer|min:1',
+            'start_date' => 'required|date|before:end_date',
+            'end_date' => 'required|date|after:start_date',
+        ]);
     }
 }

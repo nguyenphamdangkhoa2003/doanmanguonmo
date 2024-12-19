@@ -53,6 +53,15 @@ class User extends Authenticatable implements MustVerifyEmail
             'password' => 'hashed',
         ];
     }
+    public function booking_history(): HasMany
+    {
+        return $this->hasMany(Booking::class);
+    }
+    public function avatar(): HasOne
+    {
+        return $this->hasOne(Image::class);
+    }
+
     public static function countUsersRegisteredByMonth($month, $year)
     {
         return User::whereMonth('created_at', $month)

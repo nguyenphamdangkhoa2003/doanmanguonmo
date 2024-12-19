@@ -73,6 +73,7 @@ Route::middleware(["auth", IsAdminMiddleware::class])->group(function () {
     Volt::route("admin/list-room", ListRoom::class)->name("list-room");
     Volt::route("admin/add-room", AddRoom::class)->name("add-room");
     Volt::route("admin/update-room/{id}", UpdateRoom::class)->name("update-room");
+    Volt::route("admin/room-booking-times/{id}", RoomBookingTimes::class)->name("room-booking-times");
 
     Volt::route("admin/list-type-room", ListTypeRoom::class)->name("list-type-room");
     Volt::route("admin/add-room-type", AddRoomType::class)->name("add-room-type");

@@ -38,7 +38,7 @@ class Dashboard extends Component
                 ]
             ],
         ];
-        
+
         $this->revent_chart = [
             "type" => "line",
             "data" => [
@@ -64,7 +64,31 @@ class Dashboard extends Component
                 ]
             ]
         ];
-       
+        $this->user_chart = [
+            "type" => "bar",
+            "data" => [
+                "labels" => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                "datasets" => [
+                    [
+                        "label" => "# of months",
+                        "data" => [
+                            User::countUsersRegisteredByMonth("1", $date->year),
+                            User::countUsersRegisteredByMonth("2", $date->year),
+                            User::countUsersRegisteredByMonth("3", $date->year),
+                            User::countUsersRegisteredByMonth("4", $date->year),
+                            User::countUsersRegisteredByMonth("5", $date->year),
+                            User::countUsersRegisteredByMonth("6", $date->year),
+                            User::countUsersRegisteredByMonth("7", $date->year),
+                            User::countUsersRegisteredByMonth("8", $date->year),
+                            User::countUsersRegisteredByMonth("9", $date->year),
+                            User::countUsersRegisteredByMonth("10", $date->year),
+                            User::countUsersRegisteredByMonth("11", $date->year),
+                            User::countUsersRegisteredByMonth("12", $date->year),
+                        ]
+                    ]
+                ]
+            ]
+        ];
 
     }
 

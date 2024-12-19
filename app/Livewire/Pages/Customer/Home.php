@@ -147,4 +147,14 @@ class Home extends Component
             'end_date' => 'required|date|after:start_date',
         ]);
     }
+    public function redirectBookingPage()
+    {
+        session()->put("selected_type_room", $this->selected_type_room);
+        session()->put("total_price", $this->getTotalPrice());
+        session()->put("booking_dates", [
+            "start_date" => $this->start_date,
+            "end_date" => $this->end_date,
+        ]);
+        return redirect()->route("booking-info");
+    }
 }

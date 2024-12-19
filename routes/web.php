@@ -9,5 +9,5 @@ use App\Livewire\Pages\Customer\Policies;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', Home::class)->name('home');
-
+Route::get("/vnpay_php", [PaymentController::class, "vnpay_payment"])->name("vnpay_php");
 require __DIR__ . '/auth.php';

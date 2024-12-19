@@ -38,7 +38,32 @@ class Dashboard extends Component
                 ]
             ],
         ];
-
+        
+        $this->revent_chart = [
+            "type" => "line",
+            "data" => [
+                "labels" => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+                "datasets" => [
+                    [
+                        "label" => "# of months",
+                        "data" => [
+                            Booking::getMonthlyRevenue("1", $date->year),
+                            Booking::getMonthlyRevenue("2", $date->year),
+                            Booking::getMonthlyRevenue("3", $date->year),
+                            Booking::getMonthlyRevenue("4", $date->year),
+                            Booking::getMonthlyRevenue("5", $date->year),
+                            Booking::getMonthlyRevenue("6", $date->year),
+                            Booking::getMonthlyRevenue("7", $date->year),
+                            Booking::getMonthlyRevenue("8", $date->year),
+                            Booking::getMonthlyRevenue("9", $date->year),
+                            Booking::getMonthlyRevenue("10", $date->year),
+                            Booking::getMonthlyRevenue("11", $date->year),
+                            Booking::getMonthlyRevenue("12", $date->year),
+                        ]
+                    ]
+                ]
+            ]
+        ];
        
 
     }

@@ -19,4 +19,10 @@ class Contact extends Component
         $this->contact_page = ContactPage::firstOrCreate(["id" => 1, "address" => "80, Cao Lỗ, Phường 4, Quận 8, Thành phố Hồ Chí Minh", "phone" => "0326654505", "description" => "Đây là mô tả", "email" => "dangkhoa2k30@gmail.com"]);
         return view('livewire.pages.customer.contact');
     }
+    public function send()
+    {
+        $this->form->validate();
+        $contact_mess = ContactMessage::create($this->form->pull());
+        $this->success("Send successfully!");
+    }
 }

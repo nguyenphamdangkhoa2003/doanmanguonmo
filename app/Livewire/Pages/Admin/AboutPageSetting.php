@@ -19,4 +19,16 @@ class AboutPageSetting extends Component
         return view('livewire.pages.admin.about-page-setting');
     }
 
+    public function save()
+    {
+
+        // Save logic here (giả sử lưu vào bảng AboutPage)
+        AboutPage::updateOrCreate(
+            ['id' => 1], // Cập nhật nếu tồn tại, hoặc tạo mới
+            ['content' => $this->content]
+        );
+
+        // Flash a success message
+        $this->success('About page content saved successfully!');
+    }
 }

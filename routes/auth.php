@@ -89,6 +89,7 @@ Route::middleware(["auth", IsAdminMiddleware::class])->group(function () {
     Volt::route("admin/detail-contact-message/{id}", DetailContactMessage::class)->name("detail-contact-message");
 
     Volt::route("/admin/list-policy", ListPolicy::class)->name("list-policy");
+    Volt::route("admin/add-policy", AddPolicy::class)->name("add-policy");
 
 
 });

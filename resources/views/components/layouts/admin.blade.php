@@ -79,6 +79,12 @@
                 <x-mary-menu-item title="Rooms" icon="o-home-modern" link="{{ route('list-room') }}" />
                 <x-mary-menu-item title="Room Types" icon="o-tag" link="{{ route('list-type-room') }}" />
                 <x-mary-menu-item title="Booking" icon="o-shopping-cart" link="{{ route('list-booking') }}" />
+                @php
+                    $cout_message = App\Models\ContactMessage::all()->filter(fn($msg) => $msg->is_readed == 0)->count();
+
+                @endphp
+                <x-mary-menu-item title="Messages" icon="o-envelope" link="{{ route('list-contact-message') }}"
+                    badge="{{ $cout_message > 0 ? $cout_message : '' }}" badge-classes="float-right bg-sky-400" />
                 <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-mary-menu-item title="Banners" icon="o-banknotes" link="{{ route('banners') }}" />
                     <x-mary-menu-item title="About page" icon="o-information-circle"

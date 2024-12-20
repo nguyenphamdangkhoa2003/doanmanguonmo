@@ -28,4 +28,26 @@ class Banners extends Component
         }
         return view('livewire.pages.admin.banners');
     }
+
+    public function save()
+    {
+        $about_page = AboutPage::firstOrCreate(["id" => "1"]);
+        $this->banner = Banner::firstOrCreate([
+            "about_page_id" => $about_page->id
+        ]);
+        foreach ($this->photos as $photo) {
+            try {
+                $cloudinary = cloudinary()->upload($photo->getRealPath());
+                Image::create([
+                    'url' => $cloudinary->getSecurePath(),
+                    'public_image_id' => $cloudinary->getPublicId(),
+                    'banner_id' => $this->banner->id,
+                    "about_page_id" => $about_page,
+                ]);
+            } catch (\Exception $e) {
+                session()->flash('error', 'Failed to upload image: ' . $e->getMessage());
+            }
+        }
+        $this->reset(["photos"]);
+    }
 }

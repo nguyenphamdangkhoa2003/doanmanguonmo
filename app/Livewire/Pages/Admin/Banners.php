@@ -57,4 +57,12 @@ class Banners extends Component
             unset($this->photos[$key]);
         }
     }
+    public function delete($id)
+    {
+        try {
+            Image::destroy($id);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }

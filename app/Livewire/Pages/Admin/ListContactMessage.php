@@ -15,4 +15,9 @@ class ListContactMessage extends Component
             "messages" => $messages,
         ]);
     }
+
+    public function delete($id)
+    {
+        ContactMessage::destroy($id);
+    }
 }

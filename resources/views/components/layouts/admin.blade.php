@@ -81,7 +81,8 @@
                 <x-mary-menu-item title="Booking" icon="o-shopping-cart" link="{{ route('list-booking') }}" />
                 <x-mary-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-mary-menu-item title="Banners" icon="o-banknotes" link="{{ route('banners') }}" />
-
+                    <x-mary-menu-item title="About page" icon="o-information-circle"
+                        link="{{ route('about-page-setting') }}" />
                 </x-mary-menu-sub>
             </x-mary-menu>
         </x-slot:sidebar>

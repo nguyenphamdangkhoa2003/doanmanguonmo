@@ -31,4 +31,13 @@ class ListPolicy extends Component
     {
         return $this->redirectRoute("update-policy", ["id" => $id]);
     }
+
+    public function delete($id)
+    {
+        try {
+            Policy::destroy($id);
+        } catch (\Throwable $th) {
+
+        }
+    }
 }

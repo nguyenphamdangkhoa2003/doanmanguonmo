@@ -90,7 +90,7 @@ Route::middleware(["auth", IsAdminMiddleware::class])->group(function () {
 
     Volt::route("/admin/list-policy", ListPolicy::class)->name("list-policy");
     Volt::route("admin/add-policy", AddPolicy::class)->name("add-policy");
-
+    Volt::route("admin/update-policy/{id}", UpdatePolicy::class)->name("update-policy");
 
 });
 

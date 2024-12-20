@@ -89,7 +89,9 @@
                     <x-mary-menu-item title="Banners" icon="o-banknotes" link="{{ route('banners') }}" />
                     <x-mary-menu-item title="About page" icon="o-information-circle"
                         link="{{ route('about-page-setting') }}" />
+                    <x-mary-menu-item title="Policies" icon="c-shield-check" link="{{ route('list-policy') }}" />
                 </x-mary-menu-sub>
+
             </x-mary-menu>
         </x-slot:sidebar>
 

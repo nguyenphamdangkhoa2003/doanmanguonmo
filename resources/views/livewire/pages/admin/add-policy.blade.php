@@ -4,7 +4,7 @@
         <x-mary-input label="Polycy type " wire:model="form.policy_type" />
         <x-mary-textarea label="Description" wire:model="form.description" />
         <x-slot:actions>
-            <x-mary-button label="Cancel" />
+            <x-mary-button label="Cancel" link="{{ route('list-policy') }}" />
             <x-mary-button label="Save" class="btn-primary" type="submit" spinner="save" />
         </x-slot:actions>
     </x-mary-form>

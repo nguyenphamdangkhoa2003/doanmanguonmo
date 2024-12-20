@@ -48,8 +48,8 @@
                         class="rounded-none text-lg hover:border-b-2 hover:border-black {{ request()->routeIs('about') ? 'border-b-2 border-black' : '' }}"
                         title="About" link="{{ route('about') }}" />
                     <x-mary-menu-item
-                        class="rounded-none text-lg hover:border-b-2 border-black text-black transition-all duration-200"
-                        title="Contact" />
+                        class="rounded-none text-lg hover:border-b-2 hover:border-black {{ request()->routeIs('contact') ? 'border-b-2 border-black' : '' }}"
+                        title="Contact" link="{{ route('contact') }}" />
                     <x-mary-menu-item
                         class="rounded-none text-lg hover:border-b-2 border-black text-black transition-all duration-200"
                         title="Policies" />
@@ -79,8 +79,8 @@
                                 <div class="w-10 rounded-full">
                                     <img
                                         src="
-                                                                                                                                                                                                                                                                                                                                            {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
-                                                                                                                                                                                                                                                                                                                                            " />
+                                                                                                                                                                                                                                                                                                                                                {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
+                                                                                                                                                                                                                                                                                                                                                " />
                                 </div>
                             </div>
                         </div>

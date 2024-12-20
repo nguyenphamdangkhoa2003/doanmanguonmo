@@ -84,6 +84,8 @@ Route::middleware(["auth", IsAdminMiddleware::class])->group(function () {
     Volt::route("/admin/detail-booking/{id}", DetailBooking::class)->name("detail-booking");
 
     Volt::route("admin/banners", Banners::class)->name("banners");
+    Volt::route("admin/about-page-setting", AboutPageSetting::class)->name("about-page-setting");
+
 });
 
 Route::middleware(["auth", "verified"])->group(function () {

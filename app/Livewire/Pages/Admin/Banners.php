@@ -50,4 +50,11 @@ class Banners extends Component
         }
         $this->reset(["photos"]);
     }
+
+    public function deleteSelected($key)
+    {
+        if (isset($this->photos[$key])) {
+            unset($this->photos[$key]);
+        }
+    }
 }

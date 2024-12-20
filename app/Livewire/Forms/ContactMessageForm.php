@@ -22,7 +22,7 @@ class ContactMessageForm extends Form
             'first_name' => 'required|string|max:50',
             'last_name' => 'required|string|max:50',
             'email' => 'required|email|max:255',
-            'phone' => 'nullable|string|max:15',
+            'phone' => 'nullable|regex:/^\+?[0-9]{10,15}$/',
             'message' => 'required|string|max:1000',
         ];
     }

@@ -17,9 +17,9 @@ class WelcomeMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($cus_name)
     {
-        //
+        $this->cus_name = $cus_name;
     }
 
     /**

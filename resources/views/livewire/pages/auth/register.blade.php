@@ -80,7 +80,8 @@ new #[Layout('layouts.guest')] class extends Component {
             </a>
 
             <x-primary-button class=" ms-4">
-                {{ __('Register') }}
+                {{ __('Register ') }} <span wire:loading><x-mary-loading /></span>
+
             </x-primary-button>
         </div>
     </form>

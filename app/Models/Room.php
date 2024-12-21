@@ -40,10 +40,9 @@ class Room extends Model
 
             // Nếu khoảng thời gian giao nhau, phòng không khả dụng
             if (
-                ($inputStartDate >= $bookingStartDate && $inputStartDate <= $bookingEndDate) || // Trùng với khoảng thời gian đã đặt
-                ($inputStartDate <= $bookingStartDate && $inputEndDate >= $bookingStartDate)    // Bao phủ khoảng thời gian đã đặt
+                $inputStartDate >= $bookingStartDate && $inputStartDate < $bookingEndDate || $inputEndDate >= $bookingStartDate && $inputEndDate < $bookingEndDate
             ) {
-                return false; // Phòng không khả dụng
+                return false;
             }
 
         }

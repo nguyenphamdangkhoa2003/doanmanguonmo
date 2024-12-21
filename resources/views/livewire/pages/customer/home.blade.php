@@ -10,8 +10,10 @@
                 <div
                     class="w-full lg:max-w-6xl lg:m-auto  lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 lg:absolute lg:rounded-md border-primary border-2">
                     <div class="lg:flex block justify-evenly items-center bg-base-100 p-3 shadow-md rounded">
-                        <x-mary-datetime label="Start date" wire:model.live="start_date" icon="o-calendar" />
-                        <x-mary-datetime label="End date" wire:model.live="end_date" />
+                        <x-mary-datetime min="{{ \Illuminate\Support\Facades\Date::now()->toDateString()}}"
+                            label="Start date" wire:model.live="start_date" icon="o-calendar" />
+                        <x-mary-datetime min="{{ \Illuminate\Support\Facades\Date::now()->addDay()->toDateString()}}"
+                            label="End date" wire:model.live="end_date" />
                         <x-mary-input type="number" label="Adults" wire:model.live="adults" min="1" />
                         <x-mary-input type="number" label="Children" wire:model.live="children" min="0" />
                     </div>

@@ -22,6 +22,7 @@ class Home extends Component
     public $adults;
     public $start_date;
     public $end_date;
+
     public $type_rooms;
     public function mount()
     {
@@ -38,7 +39,7 @@ class Home extends Component
     public function render()
     {
         // Lấy danh sách loại phòng phù hợp
-        if (is_numeric($this->adults) && is_numeric($this->children) && $this->start_date <= $this->end_date) {
+        if (is_numeric($this->adults) && is_numeric($this->children) && $this->start_date < $this->end_date) {
             // Lấy danh sách loại phòng phù hợp
             $this->type_rooms = RoomType::whereRaw('(adults + children) >= ?', [$this->adults + $this->children]) // Tổng sức chứa >= tổng số người yêu cầu
                 ->where('adults', '>=', $this->adults) // Phòng phải đáp ứng tối thiểu số người lớn

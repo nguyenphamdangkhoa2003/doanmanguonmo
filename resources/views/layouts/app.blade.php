@@ -79,8 +79,8 @@
                                 <div class="w-10 rounded-full">
                                     <img
                                         src="
-                                                                                                                                                                                                                                                                                                                    {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
-                                                                                                                                                                                                                                                                                                                    " />
+                                                                                                                                                                                                                                                                                                                        {{ Auth::user()->avatar->url ?? Vite::asset('resources/images/user_default.png') }}
+                                                                                                                                                                                                                                                                                                                        " />
                                 </div>
                             </div>
                         </div>
@@ -105,6 +105,7 @@
     </div>
     <x-mary-main with-nav full-width>
         <x-slot:content class="!py-0 !p-0 relative">
+            aaaaaa
             {{ $slot }}
         </x-slot:content>
     </x-mary-main>
